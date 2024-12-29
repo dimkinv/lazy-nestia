@@ -1,0 +1,6 @@
+{
+    "deno.enable": false,
+    "[ts]": {
+        "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+    },
+}
