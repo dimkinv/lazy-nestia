@@ -1,72 +1,46 @@
-import { Type } from 'class-transformer';
-import {
-    IsEmail,
-    IsNotEmpty,
-    IsNumber,
-    IsString,
-    ValidateNested,
-} from 'class-validator';
+import { tags } from 'typia';
 
-class Address {
-  @IsNotEmpty()
-  @IsString()
-  city: string;
-
-  @IsNotEmpty()
-  @IsString()
-  street: string;
-
-  @IsNotEmpty()
-  @IsString()
-  zip: string;
-}
-
-export class User {
-  @IsNotEmpty()
-  @IsString()
+export type User = {
   name: string;
-
-  @IsNotEmpty()
-  @IsNumber()
   age: number;
-
-  @IsNotEmpty()
-  @IsEmail()
   email: string;
+  address: {
+    city: string;
+    street: string;
+    zip: string;
+  };
+};
 
-  @ValidateNested()
-  @Type(() => Address)
-  address: Address;
-}
+export type UserAdvCodeValidation = {
+  name: string & tags.MinLength<3>;
+  age: number & tags.Minimum<18>;
+  email: string & tags.Pattern<'^[^\\s@]+@[^\\s@]+\.[^\\s@]+$'>;
+  address: {
+    city: string;
+    street: string;
+    zip: string & tags.Pattern<'\\d{5}'>;
+  };
+};
 
-// class Address {
-//   @IsNotEmpty()
-//   @IsString()
-//   city: string = '';
-
-//   @IsNotEmpty()
-//   @IsString()
-//   street: string = '';
-
-//   @IsNotEmpty()
-//   @IsString()
-//   zip: string = '';
-// }
-
-// export class User {
-//   @IsNotEmpty()
-//   @IsString()
-//   name: string = '';
-
-//   @IsNotEmpty()
-//   @IsNumber()
-//   age: number = 0;
-
-//   @IsNotEmpty()
-//   @IsEmail()
-//   email: string = '';
-
-//   @ValidateNested()
-//   @Type(() => Address)
-//   address: Address = new Address();
-// }
+export type UserAdvCommentValidation = {
+  /**
+   * @minLength 3
+   */
+  name: string;
+  /**
+   * @minimum 18
+   */
+  age: number;
+  /**
+   * @Pattern ^[^\s@]+@[^\s@]+\.[^\s@]+$
+   */
+  email: string;
+  address: {
+    city: string;
+    street: string;
+    /**
+     * @Pattern \d{5}
+     */
+    zip: string;
+  };
+};

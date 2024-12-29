@@ -1,4 +1,5 @@
-import { Body, Controller, Post } from '@nestjs/common';
+import { TypedBody, TypedRoute } from '@nestia/core';
+import { Controller } from '@nestjs/common';
 import { User } from './user.model';
 import { UserService } from './user.service';
 
@@ -6,8 +7,8 @@ import { UserService } from './user.service';
 export class AppController {
   constructor(private readonly userService: UserService) {}
 
-  @Post()
-  addUser(@Body() user: User): User {
+  @TypedRoute.Post()
+  addUser(@TypedBody() user: User): User {
     return this.userService.addUser(user);
   }
 }
@@ -20,7 +21,8 @@ export class AppController {
 //   "email": "john.doe@example.com",
 //   "address": {
 //     "city": "New York",
-//     "street": "123 Main St"
+//     "street": "123 Main St",
+//     "zip": "10001"
 //   }
 // }'
 
@@ -29,6 +31,7 @@ export class AppController {
 // --data-raw '{
 //   "name": "John Doe",
 //   "email": "john.doe@example.com",
+//   "age": 30,
 //   "address": {
 //     "city": "New York",
 //     "street": "123 Main St",
