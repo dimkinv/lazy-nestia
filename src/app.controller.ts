@@ -1,6 +1,6 @@
 import { TypedBody, TypedRoute } from '@nestia/core';
 import { Controller } from '@nestjs/common';
-import { User } from './user.model';
+import { User, UserAdvCodeValidation } from './user.model';
 import { UserService } from './user.service';
 
 @Controller('/users')
@@ -8,7 +8,8 @@ export class AppController {
   constructor(private readonly userService: UserService) {}
 
   @TypedRoute.Post()
-  addUser(@TypedBody() user: User): User {
+  addUser(@TypedBody() user: UserAdvCodeValidation): User {
+    console.log('inside addUser in AppController');
     return this.userService.addUser(user);
   }
 }

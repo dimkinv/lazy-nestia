@@ -13,8 +13,8 @@ export type User = {
 
 export type UserAdvCodeValidation = {
   name: string & tags.MinLength<3>;
-  age: number & tags.Minimum<18>;
-  email: string & tags.Pattern<'^[^\\s@]+@[^\\s@]+\.[^\\s@]+$'>;
+  age: number & tags.Minimum<12>;
+  email: string & tags.Pattern<'^[^@]+@[^@]+\\.[^@]+$'>;
   address: {
     city: string;
     street: string;
