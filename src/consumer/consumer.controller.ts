@@ -30,3 +30,17 @@ export class ConsumerController {
     throw new InternalServerErrorException();
   }
 }
+
+
+// curl --location 'localhost:3000/consumer' \
+// --header 'Content-Type: application/json' \
+// --data-raw '{
+//   "name": "John Doe",
+//   "age": 30,
+//   "email": "john.doe@example.com",
+//   "address": {
+//     "city": "New York",
+//     "street": "123 Main St",
+//     "zip": "10001"
+//   }
+// }'
