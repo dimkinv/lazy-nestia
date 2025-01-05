@@ -13,6 +13,7 @@ export class ConsumerController {
   async execute(@TypedBody() body: User): Promise<User> {
     const connection: IConnection = {
       host: 'http://localhost:3000',
+      // simulate: true,
     };
 
     console.log('initiating api call');
