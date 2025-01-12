@@ -9,6 +9,7 @@ export class AppController {
 
   @TypedRoute.Post()
   addUser(@TypedBody() user: User): User {
+    console.log('in controller');
     return this.userService.addUser(user);
   }
 }
@@ -21,8 +22,7 @@ export class AppController {
 //   "email": "john.doe@example.com",
 //   "address": {
 //     "city": "New York",
-//     "street": "123 Main St",
-//     "zip": "10001"
+//     "street": "123 Main St"
 //   }
 // }'
 
