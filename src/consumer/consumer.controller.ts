@@ -31,7 +31,6 @@ export class ConsumerController {
   }
 }
 
-
 // curl --location 'localhost:3000/consumer' \
 // --header 'Content-Type: application/json' \
 // --data-raw '{

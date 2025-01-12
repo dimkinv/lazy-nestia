@@ -9,7 +9,7 @@ const NESTIA_CONFIG: INestiaConfig = {
     return await NestFactory.create(AppModule);
   },
   output: 'src/api',
-  // clone: true,
+  clone: true,
   // simulate: true,
   propagate: true,
   swagger: {
