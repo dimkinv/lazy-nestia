@@ -1,5 +1,5 @@
 import { TypedBody, TypedRoute } from '@nestia/core';
-import { Controller } from '@nestjs/common';
+import { Controller, Get, Param } from '@nestjs/common';
 import { User, UserAdvCodeValidation } from './user.model';
 import { UserService } from './user.service';
 
@@ -11,6 +11,21 @@ export class AppController {
   addUser(@TypedBody() user: UserAdvCodeValidation): User {
     console.log('inside addUser in AppController');
     return this.userService.addUser(user);
+  }
+
+  @Get('/:userId')
+  getUser(@Param('userId') userId:string): User {
+    console.log('inside addUser in AppController');
+    return {
+      address: {
+        city: 'Tel Aviv',
+        street: 'Hertzl',
+        zip: '12345'
+      },
+      age: 18,
+      email: 'israel@israeli@gmail.com',
+      name: 'Israel'
+    }
   }
 }
 
