@@ -21,26 +21,3 @@ export type UserAdvCodeValidation = {
     zip: string & tags.Pattern<'\\d{5}'>;
   };
 };
-
-export type UserAdvCommentValidation = {
-  /**
-   * @minLength 3
-   */
-  name: string;
-  /**
-   * @minimum 18
-   */
-  age: number;
-  /**
-   * @Pattern ^[^\s@]+@[^\s@]+\.[^\s@]+$
-   */
-  email: string;
-  address: {
-    city: string;
-    street: string;
-    /**
-     * @Pattern \d{5}
-     */
-    zip: string;
-  };
-};
