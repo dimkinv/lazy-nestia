@@ -5,3 +5,4 @@
  */
 //================================================================
 export * as users from "./users";
+export * as consumer from "./consumer";
